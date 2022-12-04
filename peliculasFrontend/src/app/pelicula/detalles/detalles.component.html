@@ -1,0 +1,18 @@
+<app-menu></app-menu>
+
+<div class="container">
+    <div *ngFor="let pelicula of peliculas">
+      <button class="btn btn-dark m-2" [routerLink]="['/peliculas']">Volver</button>
+        <div class="card mb-5 bg-dark text-white text-center">
+          <div class="card-body">
+            <h3 class="card-title">{{ pelicula.titulo }}</h3>
+            <img class="card-img-top img-responsive" src={{pelicula.portada}}>
+            <p class="card-text m-4">{{ pelicula.descripcion }}</p>
+            <p><time datetime="">Fecha de Estreno: {{pelicula.fechaEstreno}}</time></p>
+            <p>Genero: {{pelicula.genero}}</p>
+            <iframe width="850" height="600"  [src]="getVideoIframe(pelicula.video)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+          </div>
+        </div>
+      </div>
+    </div>

@@ -1,0 +1,31 @@
+<app-menu></app-menu>
+
+<div class="container">
+  <form #f="ngForm">
+    <h2 class="text-center m-4" *ngIf="!genero.id else actualiza" >Crear Genero</h2>
+
+    <ng-template #actualiza>
+      <h2 class="text-center m-4 ">Actualizar Genero</h2>
+     </ng-template>
+
+
+     <div class="form-group row">
+      <label for="categoria" class="col-form-label col-sm-2">Genero</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" name="categoria" [(ngModel)]="genero.genero" required>
+      </div>
+     </div>
+
+     <div class="text-end">
+      <button class="btn btn-success m-4" *ngIf="!genero.id else actualiza2" [disabled]="!f.valid" (click)="create()">Crear Genero</button>
+      <button class="btn btn-dark m-2" [routerLink]="['/generos']">Volver</button>
+
+      <ng-template #actualiza2>
+        <button class="btn btn-success m-4" (click)="update()">Actualiza Genero</button>
+     </ng-template>
+
+    </div>
+
+  </form>
+</div>
+

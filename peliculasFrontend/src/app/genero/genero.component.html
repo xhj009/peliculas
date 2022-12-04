@@ -1,0 +1,57 @@
+<app-menu></app-menu>
+
+<div class="container">
+  <h1 class="text-center m-5">  Lista de Generos </h1>
+  <button class="btn btn-info mb-4" routerLink="/generos/formulario" >Crear Genero</button>
+
+
+<!--  <div class="col-md-5 m-5 d-inline-flex">
+    <input type="search" class="form-control border rounded-pill " (input)="buscar()"  placeholder="Buscar nombre" name="nombre" [(ngModel)]="nombre" >
+    <button class="btn btn-primary border rounded-pill " (click)="buscar()"><i class="fa-solid fa-magnifying-glass"></i></button>
+  </div>
+-->
+
+<table class="table  text-center ">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Genero</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let genero of generos">
+        <td>{{genero.id}}</td>
+        <td>{{genero.genero}}</td>
+        <td>
+          <button class="btn btn-warning" [routerLink]="['/generos/formulario/', genero.id]" > <i class="fa-solid fa-pen-to-square"></i></button>
+          <button class="btn btn-danger m-2" (click)="delete(genero)"> <i class="fa-solid fa-trash"></i> </button>
+        </td>
+    </tr>
+
+    <!--
+    <tr>
+      <td><i class="fa-solid fa-angles-left fa-2x" (click)="rewind()"></i></td>
+      <td colspan="2">
+        <span *ngFor="let page of totalPages; let i = index">
+          <a style="cursor: pointer;" class="page-link d-inline-flex ml-2" (click)="setPage(i)" [ngClass]="{'text-primary':i===page}" > {{i+1}}  </a>
+        </span>
+      </td>
+      <td><i class="fa-solid fa-angles-right fa-2x" (click)="forward()"></i></td>
+    </tr>
+  -->
+
+  </tbody>
+</table>
+
+<div  *ngIf="generos.length > 0" class="pagination justify-content-center">
+  <td><i style="cursor: pointer;" class="fa-solid fa-angles-left fa-2x" (click)="rewind()"></i></td>
+  <td colspan="2">
+    <span *ngFor="let page of totalPages; let i = index">
+      <a style="cursor: pointer;" class="page-link d-inline-flex ml-2" (click)="setPage(i)" [ngClass]="{'text-primary':i===page}" > {{i+1}}  </a>
+    </span>
+  </td>
+  <td><i style="cursor: pointer;" class="fa-solid fa-angles-right fa-2x" (click)="forward()"></i></td>
+</div>
+
+</div>

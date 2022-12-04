@@ -1,0 +1,70 @@
+
+<app-menu></app-menu>
+
+<div class="container">
+
+  <form  #f="ngForm">
+    <h2 class="text-center m-5" *ngIf="!pelicula.id else actualiza">Crear Pelicula</h2>
+
+    <ng-template #actualiza>
+      <h2 class="text-center m-4 ">Actualizar Pelicula</h2>
+    </ng-template>
+
+    <div class="form-group row">
+      <label for="titulo" class="col-form-label col-sm-2">Titulo</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" name="titulo" [(ngModel)]="pelicula.titulo" required>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="portada" class="col-form-label col-sm-2">Portada</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" name="portada" [(ngModel)]="pelicula.portada" required>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="fechaEstreno" class="col-form-label col-sm-2">Fecha de Estreno</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" name="fechaEstreno" [(ngModel)]="pelicula.fechaEstreno" required>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="video" class="col-form-label col-sm-2">Url del servidor</label>
+      <div class="col-md-8">
+        <input type="text" class="form-control" name="video" [(ngModel)]="pelicula.video" required>
+      </div>
+    </div>
+
+
+    <div class="form-group row">
+      <label for="descripcion" class="col-form-label col-sm-2">Descripcion</label>
+      <div class="col-md-8">
+        <textarea class="form-control" id="descripcion" name="descripcion" rows="3" [(ngModel)]="pelicula.descripcion" required ></textarea>
+      </div>
+    </div>
+
+    <div class="form-group row" >
+      <label for="genero" class="col-form-label col-sm-2">Genero</label>
+      <div class="col-md-8">
+        <select class="form-control" id="genero" name="genero" [(ngModel)]="pelicula.genero" required>
+          <!--<option [value]="pelicula.genero.id"  *ngFor="let genero of generos" >{{genero.genero} </option> -->
+          <option [value]="genero.id" *ngFor="let genero of generos" required>{{genero.genero}} </option>
+        </select>
+       <!--- {{pelicula.genero}} -->
+      </div>
+    </div>
+
+    <div class="text-end">
+      <button class="btn btn-success m-4" *ngIf="!pelicula.id else actualiza2" [disabled]="!f.valid" (click)="create()" novalidate>Crear pelicula</button>
+      <button class="btn btn-dark m-2" [routerLink]="['/peliculas']">Volver</button>
+
+      <ng-template #actualiza2>
+        <button class="btn btn-success m-4" role="button" [disabled]="!f.valid" (click)="update()">Actualiza pelicula</button>
+      </ng-template>
+    </div>
+
+
+  </form>
