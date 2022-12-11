@@ -25,6 +25,6 @@ public class PeliculaSaveDTO {
     @NotNull(message = "El campo video es requerido")
     private String video;
     @NotNull(message = "El campo genero es requerido")
-    private Integer genero;
+    private String genero;
 
 }

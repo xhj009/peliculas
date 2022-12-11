@@ -51,7 +51,7 @@ public class PeliculaServiceImpl implements PeliculaService  {
     public ResponseEntity<PeliculaGetDTO> save(PeliculaSaveDTO pelicula) {
         if (pelicula.getId() != null){
             return ResponseEntity.noContent().build();
-        }if (!generoRepository.existsGeneroById(pelicula.getGenero())){
+        }if (!generoRepository.existsByGenero(pelicula.getGenero())){
             return new ResponseEntity(new Mensaje("No existe genero"),HttpStatus.NOT_FOUND);
         }
 
@@ -62,7 +62,7 @@ public class PeliculaServiceImpl implements PeliculaService  {
         nuevaPelicula.setVideo(pelicula.getVideo());
         nuevaPelicula.setPortada(pelicula.getPortada());
 
-        Genero genero = generoRepository.findById(pelicula.getGenero()).get();
+        Genero genero = generoRepository.findByGenero(pelicula.getGenero());
         nuevaPelicula.setGenero(genero);
         peliculaRepository.save(nuevaPelicula);
         PeliculaGetDTO dto = modelMapper.map(nuevaPelicula, PeliculaGetDTO.class);
@@ -83,7 +83,7 @@ public class PeliculaServiceImpl implements PeliculaService  {
         editarPelicula.setFechaEstreno(pelicula.getFechaEstreno());
         editarPelicula.setVideo(pelicula.getVideo());
         editarPelicula.setPortada(pelicula.getPortada());
-        Genero genero = generoRepository.findById(pelicula.getGenero()).get();
+        Genero genero = generoRepository.findByGenero(pelicula.getGenero());
         editarPelicula.setGenero(genero);
         peliculaRepository.save(editarPelicula);
 

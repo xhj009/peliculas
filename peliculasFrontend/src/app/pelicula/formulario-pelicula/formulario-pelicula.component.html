@@ -50,10 +50,9 @@
       <label for="genero" class="col-form-label col-sm-2">Genero</label>
       <div class="col-md-8">
         <select class="form-control" id="genero" name="genero" [(ngModel)]="pelicula.genero" required>
-          <!--<option [value]="pelicula.genero.id"  *ngFor="let genero of generos" >{{genero.genero} </option> -->
-          <option [value]="genero.id" *ngFor="let genero of generos" required>{{genero.genero}} </option>
+          <option [value]="genero.genero" *ngFor="let genero of generos" required>{{genero.genero}} </option>
         </select>
-       <!--- {{pelicula.genero}} -->
+
       </div>
     </div>
 
